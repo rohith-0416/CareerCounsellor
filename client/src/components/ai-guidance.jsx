@@ -53,33 +53,45 @@ export function AIGuidance() {
   const [inputMessage, setInputMessage] = useState("")
   const [isTyping, setIsTyping] = useState(false)
 
-  const sendMessage = () => {
-    if (!inputMessage.trim()) return
+ const sendMessage = async () => {
+  if (!inputMessage.trim()) return;
 
-    const newUserMessage = {
-      id: messages.length + 1,
-      type: 'user' ,
-      message: inputMessage,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }
+  const newUserMessage = {
+    id: messages.length + 1,
+    type: "user",
+    message: inputMessage,
+    timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+  };
 
-    setMessages(prev => [...prev, newUserMessage])
-    setInputMessage("")
-    setIsTyping(true)
+  setMessages((prev) => [...prev, newUserMessage]);
+  setInputMessage("");
+  setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponse = {
-        id: messages.length + 2,
-        type: 'ai' ,
-        message: "Thank you for your question! I'm processing your request and will provide personalized guidance based on your profile and current academic performance. This is a simulated response - in the actual implementation, this would connect to your FastAPI backend with Gemini integration.",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      }
-      setMessages(prev => [...prev, aiResponse])
-      setIsTyping(false)
-      console.log('AI response sent')
-    }, 2000)
+  try {
+    const res = await fetch("http://localhost:8000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: inputMessage }), // 👈 match FastAPI
+    });
+
+    const data = await res.json();
+
+    const aiResponse = {
+      id: newUserMessage.id + 1,
+      type: "ai",
+      message: data.response, // 👈 match FastAPI response
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+    };
+
+    setMessages((prev) => [...prev, aiResponse]);
+  } catch (err) {
+    console.error("Error fetching AI response:", err);
+  } finally {
+    setIsTyping(false);
   }
+};
+
+
 
   const handleQuickPrompt = (prompt) => {
     setInputMessage(prompt)

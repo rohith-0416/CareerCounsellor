@@ -6,12 +6,12 @@ import { CheckCircle2, Clock, TrendingUp, Target, BookOpen, FileText } from "luc
 
 // TODO: Remove mock data
 const sgpaData = [
-  { semester: 'Sem 1', sgpa: 8.2 },
-  { semester: 'Sem 2', sgpa: 8.5 },
-  { semester: 'Sem 3', sgpa: 8.8 },
-  { semester: 'Sem 4', sgpa: 9.1 },
-  { semester: 'Sem 5', sgpa: 8.9 },
-  { semester: 'Sem 6', sgpa: 9.3 },
+  { semester: 'Sem 1', sgpa: 10 },
+  { semester: 'Sem 2', sgpa: 10 },
+  { semester: 'Sem 3', sgpa: 10 },
+  { semester: 'Sem 4', sgpa: 10 },
+  { semester: 'Sem 5', sgpa: 10 },
+  { semester: 'Sem 6', sgpa: 10 },
 ]
 
 const recentTasks = [
