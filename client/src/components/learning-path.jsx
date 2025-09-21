@@ -118,7 +118,7 @@ export function LearningPath() {
   const [selectedPath, setSelectedPath] = useState(1)
   const [showAllPaths, setShowAllPaths] = useState(false)
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status) => {
     switch (status) {
       case "completed": return <CheckCircle2 className="h-5 w-5 text-chart-2" />
       case "current": return <Play className="h-5 w-5 text-chart-1" />
@@ -127,7 +127,7 @@ export function LearningPath() {
     }
   }
 
-  const getResourceIcon = (type: string) => {
+  const getResourceIcon = (type) => {
     switch (type) {
       case "video": return <Video className="h-4 w-4" />
       case "article": return <FileText className="h-4 w-4" />
@@ -136,7 +136,7 @@ export function LearningPath() {
     }
   }
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case "Beginner": return "secondary"
       case "Intermediate": return "default"

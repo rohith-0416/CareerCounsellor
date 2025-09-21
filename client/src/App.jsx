@@ -47,7 +47,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="career-counselor-theme">
         <TooltipProvider>
-          <SidebarProvider style={style as React.CSSProperties}>
+          <SidebarProvider style={style}>
             <div className="flex h-screen w-full">
               <AppSidebar />
               <div className="flex flex-col flex-1">

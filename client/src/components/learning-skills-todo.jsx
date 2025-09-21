@@ -87,7 +87,7 @@ export function LearningSkillsTodo() {
   const [filterCategory, setFilterCategory] = useState("all")
   const [filterPriority, setFilterPriority] = useState("all")
 
-  const toggleTask = (taskId: number) => {
+  const toggleTask = (taskId) => {
     setTasks(prev => prev.map(task => 
       task.id === taskId 
         ? { ...task, completed: !task.completed, progress: !task.completed ? 100 : task.progress }
@@ -105,7 +105,7 @@ export function LearningSkillsTodo() {
   const completedTasks = tasks.filter(task => task.completed).length
   const totalProgress = tasks.reduce((sum, task) => sum + task.progress, 0) / tasks.length
 
-  const getPriorityColor = (priority: string) => {
+  const getPriorityColor = (priority) => {
     switch (priority) {
       case 'high': return 'destructive'
       case 'medium': return 'default'
@@ -114,7 +114,7 @@ export function LearningSkillsTodo() {
     }
   }
 
-  const getCategoryInfo = (categoryId: string) => {
+  const getCategoryInfo = (categoryId) => {
     return skillCategories.find(cat => cat.id === categoryId) || skillCategories[0]
   }
 

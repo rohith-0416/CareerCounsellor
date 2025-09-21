@@ -56,11 +56,11 @@ const resumeAnalysis = {
 }
 
 export function ResumeChecker() {
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
+  const [uploadedFile, setUploadedFile] = useState(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [showAnalysis, setShowAnalysis] = useState(false)
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (event) => {
     const file = event.target.files?.[0]
     if (file) {
       setUploadedFile(file)
@@ -74,13 +74,13 @@ export function ResumeChecker() {
     }
   }
 
-  const getScoreColor = (score: number) => {
+  const getScoreColor = (score) => {
     if (score >= 80) return "text-chart-2"
     if (score >= 60) return "text-chart-3"
     return "text-destructive"
   }
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status) => {
     switch (status) {
       case "good": return <CheckCircle2 className="h-4 w-4 text-chart-2" />
       case "warning": return <AlertTriangle className="h-4 w-4 text-chart-3" />
@@ -89,7 +89,7 @@ export function ResumeChecker() {
     }
   }
 
-  const getPriorityColor = (priority: string) => {
+  const getPriorityColor = (priority) => {
     switch (priority) {
       case "high": return "destructive"
       case "medium": return "default"

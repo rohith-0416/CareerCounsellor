@@ -102,7 +102,7 @@ export function CareerNews() {
     return categoryMatch && searchMatch
   })
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     const date = new Date(dateString)
     const now = new Date()
     const diffTime = Math.abs(now.getTime() - date.getTime())

@@ -46,15 +46,15 @@ const currentSubjects = [
 ]
 
 export function InternalMarksTracker() {
-  const [selectedSubject, setSelectedSubject] = useState<typeof currentSubjects[0] | null>(null)
+  const [selectedSubject, setSelectedSubject] = useState(null)
   const [isAddingNew, setIsAddingNew] = useState(false)
 
-  const calculateTotal = (internal1: number, internal2: number, internal3: number, assignment: number) => {
+  const calculateTotal = (internal1, internal2, internal3, assignment) => {
     const internals = [internal1, internal2, internal3].sort((a, b) => b - a)
     return internals[0] + internals[1] + assignment
   }
 
-  const getGrade = (total: number) => {
+  const getGrade = (total) => {
     if (total >= 45) return "A+"
     if (total >= 40) return "A"
     if (total >= 35) return "B+"

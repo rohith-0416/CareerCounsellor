@@ -156,7 +156,7 @@ export function CourseLibrary() {
     ? enrolledCourses.reduce((sum, course) => sum + course.progress, 0) / enrolledCourses.length 
     : 0
 
-  const getLevelColor = (level: string) => {
+  const getLevelColor = (level) => {
     switch (level) {
       case "Beginner": return "secondary"
       case "Intermediate": return "default"
@@ -165,7 +165,7 @@ export function CourseLibrary() {
     }
   }
 
-  const getPlatformIcon = (platform: string) => {
+  const getPlatformIcon = (platform) => {
     switch (platform) {
       case "YouTube": return <Video className="h-4 w-4" />
       default: return <BookOpen className="h-4 w-4" />

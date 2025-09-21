@@ -58,7 +58,7 @@ export function AIGuidance() {
 
     const newUserMessage = {
       id: messages.length + 1,
-      type: 'user' as const,
+      type: 'user' ,
       message: inputMessage,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
@@ -71,7 +71,7 @@ export function AIGuidance() {
     setTimeout(() => {
       const aiResponse = {
         id: messages.length + 2,
-        type: 'ai' as const,
+        type: 'ai' ,
         message: "Thank you for your question! I'm processing your request and will provide personalized guidance based on your profile and current academic performance. This is a simulated response - in the actual implementation, this would connect to your FastAPI backend with Gemini integration.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }
@@ -81,11 +81,11 @@ export function AIGuidance() {
     }, 2000)
   }
 
-  const handleQuickPrompt = (prompt: string) => {
+  const handleQuickPrompt = (prompt) => {
     setInputMessage(prompt)
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       sendMessage()
